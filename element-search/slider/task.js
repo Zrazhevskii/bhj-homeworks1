@@ -4,6 +4,8 @@ const slidItem = document.querySelectorAll('.slider__item');
 const slidArrow = document.querySelectorAll('.slider__arrow');
 const slidPrev = document.querySelector('.slider__arrow_prev');
 const slidNext = document.querySelector('.slider__arrow_next');
+const slidDot = document.querySelectorAll('.slider__dot');
+
 
 let n = 0;
 
@@ -13,6 +15,7 @@ for (let i = 0; i < slidArrow.length; i++) {
         changeSlide(slidArrow[i])
     };
 }
+
 
 function changeSlide(item) {
     slidItem[n].classList.remove('slider__item_active');
@@ -33,5 +36,19 @@ function changeSlide(item) {
             }
         };
 };
+
+
+for (let i = 0; i < slidDot.length; i++) {
+    slidDot[i].onclick = () => {
+        changeDot(i)
+    };
+}
+
+
+function changeDot(i) {
+    slidItem[n].classList.remove('slider__item_active');
+    slidItem[i].classList.add('slider__item_active');
+    n = i;
+}
 
     
