@@ -13,11 +13,11 @@ list_link.forEach(item => {
         } else {
             if(linkActive) {
                 linkActive.classList.remove('menu_active');
-                linkUl.classList.add('menu_active')
+                linkUl.classList.add('menu_active');
             } else {
-                linkUl.classList.add('menu_active')
+                linkUl.classList.add('menu_active');
             }
         }
         return false;
-    };
+    }
 })

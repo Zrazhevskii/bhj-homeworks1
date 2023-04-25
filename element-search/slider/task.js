@@ -12,8 +12,8 @@ let n = 0;
 
 for (let i = 0; i < slidArrow.length; i++) {
     slidArrow[i].onclick = () => {
-        changeSlide(slidArrow[i])
-    };
+        changeSlide(slidArrow[i]);
+    }
 }
 
 
@@ -24,23 +24,23 @@ function changeSlide(item) {
         n = 0;
         slidItem[n].classList.add('slider__item_active');
     } else if (item == slidNext) {
-            n++
+            n++;
             slidItem[n].classList.toggle('slider__item_active');
         } else {
             if (n == 0) {
                 n = slidItem.length - 1;
                 slidItem[n].classList.add('slider__item_active');
             } else if ((n !== 0) || (n === slidItem.length - 1)) {
-                n--
+                n--;
                 slidItem[n].classList.add('slider__item_active');   
             }
-        };
-};
+        }
+}
 
 
 for (let i = 0; i < slidDot.length; i++) {
     slidDot[i].onclick = () => {
-        changeDot(i)
+        changeDot(i);
     };
 }
 

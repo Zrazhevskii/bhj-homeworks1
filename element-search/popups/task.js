@@ -10,13 +10,15 @@ const btn_success = document.getElementsByClassName('btn_success');
 main.className = 'modal modal_active';
 
 function play() {
-    for (let i = 0; i < closes.length; i++)
+    for (let i = 0; i < closes.length; i++) {
         closes[i].onclick = () => {
             closes[i].closest('.modal').className = 'modal';
-            if (closes[i] === show[0])
-            success.className = 'modal modal_active';
-    }
+            if (closes[i] === show[0]) {
+                success.className = 'modal modal_active';
+            }
+        }
+    }      
 }
 
-play()
+play();
         
