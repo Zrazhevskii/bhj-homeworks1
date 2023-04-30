@@ -9,10 +9,11 @@ dropdown_value.addEventListener("click", () => {
     drop_list.classList.toggle("dropdown__list_active");
 });
 
-drop_item.forEach((event) => {
-    event.addEventListener('click', function(event) {
+drop_item.forEach((evt) => {
+    evt.addEventListener('click', function(evt) {
+        evt.preventDefault();
         dropdown_value.textContent = this.textContent;
         drop_list.classList.toggle("dropdown__list_active");
-        event.preventDefault();
+        
     })
 })
