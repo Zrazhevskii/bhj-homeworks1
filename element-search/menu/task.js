@@ -1,30 +1,32 @@
 'use strict'
 
-let menu_link = document.getElementsByClassName('menu__link');
-let list_link = Array.from(menu_link);
+const linkMenu = document.getElementsByClassName('menu__link');
+const linksList = Array.from(linkMenu);
 
-list_link.forEach((item) => {
-	item.onclick = () => {
-	let linkUl = item.parentElement.querySelector('ul');
 
-    if (linkUl == null) {
-        linkUl.classList.add('menu_active');
-    }
+linksList.forEach((link) => {
+	link.addEventListener('click', (event) => {
+		const hasMenu = event.target.nextElementSibling
+		const menuSubList = document.querySelectorAll('.menu_sub')
+	
+		menuSubList.forEach((menuSub) => {
+			if (menuSub.classList.contains('menu_active')) {
+				if (menuSub === hasMenu) {
+					return
+				} else {
+					menuSub.classList.remove('menu_active')
+				}
+			}
+		})
 
-	if(linkUl) {
-		let disActive = linkUl.className.includes('menu_active');
-		let linkActive = item.closest('.menu_main').querySelector('.menu_active');
-
-		if(linkActive) {
-			linkActive.classList.remove('menu_active');
+		if (hasMenu === null) {
+			return
 		}
-		if (disActive) {
-			linkUl.classList.remove('menu_active');
-		} else {
-			linkUl.classList.add('menu_active');
+
+		if (hasMenu !== null) {
+			hasMenu.classList.toggle('menu_active')
 		}
-	}
-	return false;
-	}
+	})
 });
+
 
