@@ -22,7 +22,6 @@ class Game {
 
   registerEvents() {
     addEventListener("keypress", (event) => {
-      console.log(this.wordLength);
       if (this.currentSymbol.textContent.toLowerCase() === event.key.toLowerCase()) {
         this.success()
       } else {
