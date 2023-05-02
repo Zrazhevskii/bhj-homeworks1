@@ -4,7 +4,11 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    this.timerElement = container.querySelector('.status_timer');
 
+    this.timer;
+    this.wordLength;
+    
     this.reset();
 
     this.registerEvents();
@@ -17,15 +21,16 @@ class Game {
   }
 
   registerEvents() {
-    addEventListener("keypress", event => {
+    addEventListener("keypress", (event) => {
+      console.log(this.wordLength);
       if (this.currentSymbol.textContent.toLowerCase() === event.key.toLowerCase()) {
         this.success()
       } else {
         this.fail()
-      }
+      }      
     })
-  };
-        
+  };        
+
 
   success() {
     if(this.currentSymbol.classList.contains("symbol_current")) this.currentSymbol.classList.remove("symbol_current");
@@ -54,7 +59,6 @@ class Game {
 
   setNewWord() {
     const word = this.getWord();
-
     this.renderWord(word);
   }
 
@@ -73,11 +77,25 @@ class Game {
         'javascript'
       ],
       index = Math.floor(Math.random() * words.length);
-
+      this.wordLength = words[index].length;
     return words[index];
   }
 
-  renderWord(word) {
+  countdownTimer = () => {
+    if (this.timerElement.textContent == 0) {
+      this.fail();
+    } else {
+      this.timerElement.textContent--;
+    }
+  }
+
+  renderWord(word) {   
+    
+    this.timerElement.textContent = this.wordLength;
+    if (this.timer)
+      clearInterval(this.timer);
+    this.timer = setInterval(this.countdownTimer, 1000);
+
     const html = [...word]
       .map(
         (s, i) =>
@@ -85,10 +103,9 @@ class Game {
       )
       .join('');
     this.wordElement.innerHTML = html;
-
     this.currentSymbol = this.wordElement.querySelector('.symbol_current');
   }
 }
 
-new Game(document.getElementById('game'))
 
+new Game(document.getElementById('game'));
