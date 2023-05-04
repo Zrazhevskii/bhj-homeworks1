@@ -53,7 +53,7 @@ colorBackground.forEach((evt) => {
         book.classList.remove("book_bg-black");
         book.classList.remove("book_bg-gray");
         book.classList.remove("book_bg-white");
-        book.classList.add(`book_bg-${evt.target.dataset.bgColor}`);
+        book.classList.add(`book_bg-${this.dataset.bgColor}`);
 
         evt.preventDefault();
     })
