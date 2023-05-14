@@ -23,7 +23,6 @@ for (let i = 0; i < hasTooltip.length; i++) {
       "style",
       `top: ${top + 20 + "px"}; left: ${left + 20 + "px"};`
     );
-    document.body.append(div);
     aTeg[i].insertAdjacentElement("afterEnd", div);
   });
 }
