@@ -9,9 +9,7 @@ for (let i = 0; i < hasTooltip.length; i++) {
     evt.preventDefault();
 
     const tooltipActive = document.querySelector(".tooltip_active");
-    console.log(tooltipActive);
     if (tooltipActive) {
-      console.log(true);
       tooltipActive.classList.remove("tooltip_active");
       return;
     }
