@@ -13,25 +13,19 @@ taskAdd.addEventListener("click", (evt) => {
   createMessege(evt);
 });
 
-tasks.addEventListener("keydown", (evt) => {
-  if (evt.code === "Enter") {
-    createMessege(evt);
-  }
-});
-
 function createMessege(evt) {
   evt.preventDefault();
 
-  if (tasksInput.value === "") {
+  if (tasksInput.value.trim() === "") {
+    alert("Упс! Задача не написана:(");
     return;
-  } else {
-    const div = document.createElement("div");
-    div.className = "task";
-    div.innerHTML += `<div class="task__title">${tasksInput.value}</div>
-                        <a href="#" class="task__remove">&times;</a>`;
-    taskList.prepend(div);
-    tasksInput.value = "";
   }
+  const div = document.createElement("div");
+  div.className = "task";
+  div.innerHTML += `<div class="task__title">${tasksInput.value}</div>
+                      <a href="#" class="task__remove">&times;</a>`;
+  taskList.prepend(div);
+  tasksInput.value = "";
 }
 
 taskList.addEventListener("click", (evt) => {
