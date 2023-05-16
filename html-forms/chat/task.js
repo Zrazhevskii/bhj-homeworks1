@@ -46,8 +46,10 @@ function answers(event) {
     } else {
         timMinutes = newDate.getMinutes()
     }
+
+    let lst = ''
     
-    if (event.target.value === '') {
+    if ((event.target.value).trim() === '') {
         alert('Нельзя отправлять пустое сообщение!')
     } else {
         message.innerHTML += `
