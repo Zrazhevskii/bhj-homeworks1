@@ -13,7 +13,7 @@ for (let i = 0; i < hasTooltip.length; i++) {
       tooltipActive.classList.remove("tooltip_active");
       if (tooltipActive.textContent == hasTooltip[i].title) {
         return false;
-      } 
+      }
     }
 
     const { top, left } = evt.target.getBoundingClientRect();
