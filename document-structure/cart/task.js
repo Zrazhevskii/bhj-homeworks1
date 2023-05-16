@@ -22,7 +22,7 @@ for (let i = 0; i < controlInc.length; i++) {
 
 for (let i = 0; i < controlDec.length; i++) {
   controlDec[i].addEventListener("click", () => {
-    if (quantityValue[i].textContent === "0") {
+    if (quantityValue[i].textContent === "1") {
       return;
     } else {
       quantityValue[i].textContent--;
@@ -36,24 +36,16 @@ for (let i = 0; i < productAdd.length; i++) {
     const imgSrc = img[i].getAttribute("src");
     const products = Array.from(document.querySelectorAll(".cart__product"));
 
-    let allCardId = [];
-
-    for (let s = 0; s < products.length; s++) {
-      allCardId[s] = products[s].getAttribute("data-id");
-    }
-
-    if (allCardId.indexOf(dataId) !== -1) {
-      for (let i = 0; i < allCardId.length; i++) {
-        if (allCardId[i] === dataId) {
-          let productCount = products[i].querySelector(".cart__product-count");
-          productCount.textContent = quantityValue[i].textContent;
-        }
-      }
+    const productInCard = products.find((value) => value.dataset.id === dataId);
+    if (productInCard) {
+      let productCount = products[i].querySelector(".cart__product-count");
+      productCount.textContent =
+        Number(productCount.textContent) + Number(quantityValue[i].textContent);
     } else {
       cartProducts.innerHTML += `<div class="cart__product" data-id="${dataId}">
-                <img class="cart__product-image" src="${imgSrc}">
-                <div class="cart__product-count">${quantityValue[i].textContent}</div>
-                </div>`;
+           <img class="cart__product-image" src="${imgSrc}">
+           <div class="cart__product-count">${quantityValue[i].textContent}</div>
+           </div>`;
     }
   });
 }
