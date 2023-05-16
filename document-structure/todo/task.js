@@ -20,7 +20,8 @@ tasks.addEventListener('keydown', (evt) => {
 })
 
 function createMessege(evt) {
-
+    evt.preventDefault();
+    
     if (tasksInput.value === '') {
         return
     } else {
