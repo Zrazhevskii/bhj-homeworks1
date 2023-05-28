@@ -4,7 +4,6 @@
 const modal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal__close');
 const  allCookie = document.cookie.split(';');
-console.log(allCookie);
 
 document.addEventListener('DOMContentLoaded', function() {
   for (let i = 0; i < allCookie.length; i++) {
@@ -22,5 +21,4 @@ modalClose.addEventListener('click', () => {
   let date = new Date(Date.now() + 86400e3);
   date = date.toUTCString();
   document.cookie = 'popup=close; expires=' + date
-  console.log(document.cookie);
 })
