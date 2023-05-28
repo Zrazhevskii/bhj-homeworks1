@@ -14,6 +14,7 @@ save.addEventListener('click', function(){
 clear.addEventListener('click', function(){
     textarea.value = ''
     localStorage.removeItem('value')
+    localStorage.removeItem('value1')
 })
 
 console.log(localStorage.getItem('value'));
