@@ -30,7 +30,7 @@ async function sendRequest(url, body) {
     if (response.ok) {
       let text = await response.text();
       text = JSON.parse(text);
-      show(text["user_id"]);
+      auth(text["user_id"]);
     } else {
       alert("Ошибка HTTP: " + response.status);
       form.reset();
@@ -38,7 +38,7 @@ async function sendRequest(url, body) {
   }
 }
 
-function show(id) {
+function auth(id) {
   signin.classList.remove("signin_active");
   welcome.classList.add("welcome_active");
   userId.textContent = `${id}`;
